@@ -25,6 +25,13 @@
         <span>Fakultas</span></a>
 </li>
 
+<!-- Nav Item - Prodi -->
+<li class="nav-item active">
+    <a class="nav-link" href="{{ route('prodi.index') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Prodi</span></a>
+</li>
+
 <hr class="sidebar-divider d-none d-md-block">
 
 <!-- Sidebar Toggler (Sidebar) -->
