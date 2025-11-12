@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\prodi;
+use App\Models\Fakultas;
 use Illuminate\Http\Request;
 
 class ProdiController extends Controller
@@ -21,7 +22,9 @@ class ProdiController extends Controller
      */
     public function create()
     {
-        return view('prodi.create');
+        $fakultas = Fakultas::all();
+        $prodi = prodi::all();
+        return view('prodi.create',compact('prodi','fakultas'));
     }
 
     /**
@@ -32,10 +35,12 @@ class ProdiController extends Controller
         $validate = $request->validate([
             'nama_prodi' => 'required|max:50',
             'kode_prodi' => 'required',
+            'fakultas_id' => 'required'
         ]);
         $prodi = prodi::create([
             'nama_prodi' => $request->nama_prodi,
             'kode_prodi' => $request->kode_prodi,
+            'fakultas_id' =>$request->fakultas_id
         ]);
 
         return redirect()->route('prodi.index');
@@ -54,8 +59,9 @@ class ProdiController extends Controller
      */
     public function edit(string $id)
     {
-        $prodi = prodi::find($id);
-        return view('prodi.edit', compact('prodi'));
+        $prodi = prodi::findOrFail($id);
+        $fakultas = Fakultas::all();
+        return view('prodi.edit', compact('prodi','fakultas'));
     }
 
     /**

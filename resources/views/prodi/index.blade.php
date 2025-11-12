@@ -21,15 +21,7 @@
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Prodi</th>
-                                            <th>Kode Prodi</th>
-                                            <th>Aksi</th>
-
-                                        </tr>
-                                    </tfoot>
+                                    
                                     <tbody>
 
                             @foreach ($prodi as $item)

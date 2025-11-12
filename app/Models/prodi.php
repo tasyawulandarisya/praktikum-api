@@ -9,6 +9,10 @@ class prodi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama_prodi','kode_prodi'];
+    protected $fillable = ['nama_prodi','kode_prodi','fakultas_id'];
+
+    public function fakultas(){
+        return $this->belongsto(Fakultas::class,'fakultas_id');
+    }
 
 }

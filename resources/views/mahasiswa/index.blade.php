@@ -2,13 +2,13 @@
 
 @section('content')
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Daftar Fakultas</h1>
-<a href="{{ route('fakultas.create')}}" class="btn btn-primary">Tambah Fakultas</a>
+<h1 class="h3 mb-2 text-gray-800">Daftar Mahasiswa</h1>
+<a href="{{ route('mahasiswa.create')}}" class="btn btn-primary">Tambah Mahasiswa</a>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 mt-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Fakultas</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -16,22 +16,24 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Fakultas</th>
-                                            <th>Kode Fakultas</th>
+                                            <th>Nama Mahasiswa</th>
+                                            <th>Nim</th>
+                                            <th>Prodi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
 
-                            @foreach ($fakultas as $item)
+                            @foreach ($mahasiswa as $item)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{$item->nama_fakultas}}</td>
-                                            <td>{{$item->kode_fakultas}}</td>
+                                            <td>{{$item->nama_mahasiswa}}</td>
+                                            <td>{{$item->nim}}</td>
+                                            <td>{{$item->prodi}}</td>
                                             <td>
-                                                <a href="{{ route('fakultas.edit',$item->id) }}" class="btn btn-primary">Edit</a>
-                                                <a href="{{ route('fakultas.hapus',$item->id) }}" class="btn btn-danger">Hapus</a>
+                                                <a href="{{ route('mahasiswa.edit',$item->id) }}" class="btn btn-primary">Edit</a>
+                                                <a href="{{ route('mahasiswa.hapus',$item->id) }}" class="btn btn-danger">Hapus</a>
                                             </td>
                                         </tr>
                             @endforeach

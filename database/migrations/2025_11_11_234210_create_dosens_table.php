@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prodis', function (Blueprint $table) {
+        Schema::create('dosens', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_prodi');
-            $table->string('kode_prodi');
+            $table->string('nama_mahasiswa');
+            $table->string('nidn');
+            $table->string('prodi');
 
-            $table->foreignId('fakultas_id')->references('id')->on('fakultas')->onUpdate('cascade')->onDelete('cascade');
-
+            $table->foreignId('prodi_id')->references('id')->on('prodi')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prodis');
+        Schema::dropIfExists('dosens');
     }
 };

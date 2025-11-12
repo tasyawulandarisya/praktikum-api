@@ -32,6 +32,13 @@
         <span>Prodi</span></a>
 </li>
 
+<!-- Nav Item - Mahasiswa -->
+<li class="nav-item active">
+    <a class="nav-link" href="{{ route('mahasiswa.index') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Mahasiswa</span></a>
+</li>
+
 <hr class="sidebar-divider d-none d-md-block">
 
 <!-- Sidebar Toggler (Sidebar) -->

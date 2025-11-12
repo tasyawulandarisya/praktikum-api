@@ -35,6 +35,17 @@
             </div>
 
             <div class="form-group">
+                <label for="fakultas_id">Fakultas</label>
+                <select class="form-control" name="fakultas_id" id="fakultas_id">
+
+                    <option value="{{$prodi->fakultas->id}}">{{$prodi->fakultas->nama_fakultas}}</option>    
+                    @foreach($fakultas as $item)
+                    <option value="{{$item->id}}">{{$item->nama_fakultas}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
         </form>

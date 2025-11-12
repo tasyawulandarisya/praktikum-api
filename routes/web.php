@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProdiController;
 use App\Models\Fakultas;
+use App\Models\Mahasiswa;
 use App\Models\prodi;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class,'index'])->name('dashboard.index');
 
+//fakultas
 Route::get('/fakultas', [FakultasController::class,'index'])->name('fakultas.index');
 Route::get('/fakultas/create', [FakultasController::class,'create'])->name('fakultas.create');
 Route::post('/fakultas/store', [FakultasController::class,'store'])->name('fakultas.store');
@@ -36,6 +40,14 @@ Route::get('/prodi/edit/{id}', [ProdiController::class,'edit'])->name('prodi.edi
 Route::post('/prodi/update/{id}', [ProdiController::class,'update'])->name('prodi.update');
 Route::get('/prodi/hapus/{id}', [ProdiController::class,'destroy'])->name('prodi.hapus');
 
+//mahasiswa
+Route::get('/mahasiswa', [MahasiswaController::class,'index'])->name('mahasiswa.index');
+Route::get('/mahasiswa/create', [MahasiswaController::class,'create'])->name('mahasiswa.create');
+Route::post('/mahasiswa/store', [MahasiswaController::class,'store'])->name('mahasiswa.store');
+Route::get('/mahasiswa/edit/{id}', [MahasiswaController::class,'edit'])->name('mahasiswa.edit');
+Route::post('/mahasiswa/update/{id}', [MahasiswaController::class,'update'])->name('mahasiswa.update');
+Route::get('/mahasiswa/hapus/{id}', [MahasiswaController::class,'destroy'])->name('mahasiswa.hapus');
+
 Route::get('/profil', function () {
     return view('profil');
 });
@@ -43,3 +55,6 @@ Route::get('/profil', function () {
 Route::get('/data', function () {
     return view('data');
 });
+
+Route::get('/register',[AuthController::class, 'formRegister'])->name('register');
+Route::post('/pos-register',[AuthController::class,'post'])->name('post');
