@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mahasiswa;
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 
-class MahasiswaController extends Controller
+class DosenController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $mahasiswa = Mahasiswa::all();
-        return view('mahasiswa.index', compact('mahasiswa'));
+        $dosen = Dosen::all();
+        return view('dosen.index', compact('dosen'));
     }
 
     /**
@@ -21,8 +21,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        $mahasiswa = Mahasiswa::all();
-        return view('mahasiswa.create',compact('mahasiswa'));
+        $dosen = Dosen::all();
+        return view('dosen.create',compact('dosen'));
     }
 
     /**
@@ -31,17 +31,17 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nama_mahasiswa' => 'required|max:50',
-            'nim' => 'required|unique:mahasiswas',
+            'nama_dosen' => 'required|max:50',
+            'nidn' => 'required|unique:dosens',
             'prodi' => 'required'
         ]);
-        $mahasiswa = Mahasiswa::create([
-            'nama_mahasiswa' => $request->nama_mahasiswa,
-            'nim' => $request->nim,
+        $dosen = Dosen::create([
+            'nama_dosen' => $request->nama_dosen,
+            'nidn' => $request->nidn,
             'prodi' =>$request->prodi
         ]);
 
-        return redirect()->route('mahasiswa.index');
+        return redirect()->route('dosen.index');
     }
 
     /**
@@ -57,8 +57,8 @@ class MahasiswaController extends Controller
      */
     public function edit(string $id)
     {
-        $mahasiswa = Mahasiswa::findOrFail($id);
-        return view('mahasiswa.edit', compact('mahasiswa'));
+        $dosen = Dosen::findOrFail($id);
+        return view('dosen.edit', compact('dosen'));
     }
 
     /**
@@ -67,19 +67,19 @@ class MahasiswaController extends Controller
     public function update(Request $request, string $id)
     {
         $validate = $request->validate([
-            'nama_mahasiswa' => 'required|max:50',
-            'nim' => 'required|unique:mahasiswas',
+            'nama_dosen' => 'required|max:50',
+            'nidn' => 'required|unique:dosens',
             'prodi' => 'required',
         ]);
 
-        $mahasiswa = mahasiswa::findOrFail($id);
-        $mahasiswa->update([
-            'nama_mahasiswa'=> $request->nama_mahasiswa,
-            'nim'=> $request->nim,
+        $dosen = Dosen::findOrFail($id);
+        $dosen->update([
+            'nama_dosen'=> $request->nama_dosen,
+            'nidn'=> $request->nim,
             'prodi'=> $request->prodi,
         ]);
 
-        return redirect()->route('mahasiswa.index');
+        return redirect()->route('dosen.index');
     }
 
     /**
@@ -87,9 +87,9 @@ class MahasiswaController extends Controller
      */
     public function destroy(string $id)
     {
-        $mahasiswa = Mahasiswa::findOrFail($id);
+        $dosen = Dosen::findOrFail($id);
 
-        $mahasiswa->delete();
-        return redirect()->route('mahasiswa.index');
+        $dosen->delete();
+        return redirect()->route('dosen.index');
     }
 }

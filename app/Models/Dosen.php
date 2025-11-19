@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Dosen extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama_dosen','nidn', 'prodi_id'];
+    protected $fillable = ['nama_dosen','nidn','prodi_id'];
+
+    public function prodi(){
+        return $this->belongsto(Prodi::class,'prodi_id');
+    }
 }

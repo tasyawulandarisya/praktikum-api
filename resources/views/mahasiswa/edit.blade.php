@@ -1,53 +1,55 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Edit Mahasiswa</h1>
 
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4 mt-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Edit Mahasiswa</h6>
+    <div class="container-fluid">
 
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Daftar Prodi</h1>
+        <a href="" class="btn btn-primary mb-4"> Tambah Mahasiswa</a>
+
+
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Edit Mahasiswa</h6>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('mahasiswa.update', $mahasiswa) }}" method="POST">
+
+                    @csrf
+                    <div class="form-group">
+                        <label for="nama_fakultas">Nama Mahasiswa</label>
+                        <input type="text" class="form-control" id="nama_mahasiswa" name="nama_mahasiswa" placeholder="masukan nama Mahasiswa"
+                            value="{{ $mahasiswa->nama_mahasiswa }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kode_fakultas">NIM Mahasiswa</label>
+                        <input type="text" class="form-control" id="kode_prodi" name="nim_mahasiswa"
+                            placeholder="masukan nim mahasiswa" value="{{ $mahasiswa->nim_mahasiswa }}">
+                    </div>
+
+                    <div class="form-group">
+
+                        <button type="submit" class="btn btn-primary mt-2">
+                            <i class="fa fa-save"></i></button>
+                    </div>
+
+
+
+
+
+                </form>
+            </div>
+        </div>
 
     </div>
 
-    <div class="card-body">
-        <form action="{{ route('mahasiswa.update', $mahasiswa->id)}}" method="post">
-            @csrf
-            <div class="form-group">
-                <label for="nama_mahasiswa">Nama Mahasiswa</label>
-                <input type="text" class="form-control" id="nama_mahasiswa" name="nama_mahasiswa" placeholder="Masukkan Nama Prodi" value="{{ $mahasiswa->nama_mahasiswa }}">
-
-                @error('nama_mahasiswa')
-                <small class="text-danger">{{$message}}</small>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="nim">Nim</label>
-                <input type="text" class="form-control" id="nim" name="nim" placeholder="Masukkan Nim" value="{{ $mahasiswa->nim }}">
-
-                @error('nim')
-                <small class="text-danger">{{$message}}</small>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="prodi">Prodi</label>
-                <input type="text" class="form-control" id="prodi" name="prodi" placeholder="Masukkan Prodi" value="{{ $mahasiswa->prodi }}">
-
-                @error('prodi')
-                <small class="text-danger">{{$message}}</small>
-                @enderror
-            </div>
 
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
-        </form>
-    </div>
-</div>
+
+
 @endsection

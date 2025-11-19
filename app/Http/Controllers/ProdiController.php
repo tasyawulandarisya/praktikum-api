@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\prodi;
+use App\Models\Prodi;
 use App\Models\Fakultas;
 use Illuminate\Http\Request;
 
@@ -13,8 +13,8 @@ class ProdiController extends Controller
      */
     public function index()
     {
-        $prodi = prodi::all();
-        return view('prodi.index', compact('prodi'));
+        $prodi = Prodi::all();
+        return view('prodi.index',compact('prodi'));
     }
 
     /**
@@ -23,7 +23,7 @@ class ProdiController extends Controller
     public function create()
     {
         $fakultas = Fakultas::all();
-        $prodi = prodi::all();
+        $prodi = Prodi::all();
         return view('prodi.create',compact('prodi','fakultas'));
     }
 
@@ -37,10 +37,11 @@ class ProdiController extends Controller
             'kode_prodi' => 'required',
             'fakultas_id' => 'required'
         ]);
-        $prodi = prodi::create([
+        $prodi = Prodi::create([
             'nama_prodi' => $request->nama_prodi,
             'kode_prodi' => $request->kode_prodi,
             'fakultas_id' =>$request->fakultas_id
+            
         ]);
 
         return redirect()->route('prodi.index');
@@ -59,7 +60,7 @@ class ProdiController extends Controller
      */
     public function edit(string $id)
     {
-        $prodi = prodi::findOrFail($id);
+        $prodi = Prodi::findOrFail($id);
         $fakultas = Fakultas::all();
         return view('prodi.edit', compact('prodi','fakultas'));
     }
@@ -74,7 +75,7 @@ class ProdiController extends Controller
             'kode_prodi' => 'required',
         ]);
 
-        $prodi = prodi::findOrFail($id);
+        $prodi = Prodi::findOrFail($id);
         $prodi->update([
             'nama_prodi'=> $request->nama_prodi,
             'kode_prodi'=> $request->kode_prodi,
@@ -88,7 +89,7 @@ class ProdiController extends Controller
      */
     public function destroy(string $id)
     {
-        $prodi = prodi::findOrFail($id);
+        $prodi = Prodi::findOrFail($id);
 
         $prodi->delete();
         return redirect()->route('prodi.index');

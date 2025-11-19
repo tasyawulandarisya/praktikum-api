@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dosens', function (Blueprint $table) {
+        Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
             $table->string('nama_mahasiswa');
-            $table->string('nidn');
-            $table->string('prodi');
+            $table->string('nim');
+        
 
-            $table->foreignId('prodi_id')->references('id')->on('prodi')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('prodi_id')->references('id')->on('prodis')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dosens');
+        Schema::dropIfExists('mahasiswas');
     }
 };
