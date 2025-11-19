@@ -54,4 +54,14 @@ class AuthController extends Controller
 
         return redirect()->route('register')->with('success','Akun Berhasil Didaftarkan');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+    
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+    
+        return redirect('/login');
+    }
 }
