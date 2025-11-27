@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -21,8 +22,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        $mahasiswa = Mahasiswa::all();
-        return view('mahasiswa.create',compact('mahasiswa'));
+        $prodi = Prodi::all();
+        return view('mahasiswa.create',compact('prodi'));
     }
 
     /**
@@ -33,12 +34,12 @@ class MahasiswaController extends Controller
         $validate = $request->validate([
             'nama_mahasiswa' => 'required|max:50',
             'nim' => 'required|unique:mahasiswas',
-            'prodi' => 'required'
+            'prodi_id' => 'required'
         ]);
         $mahasiswa = Mahasiswa::create([
             'nama_mahasiswa' => $request->nama_mahasiswa,
             'nim' => $request->nim,
-            'prodi' =>$request->prodi
+            'prodi_id' =>$request->prodi_id
         ]);
 
         return redirect()->route('mahasiswa.index');
@@ -58,7 +59,8 @@ class MahasiswaController extends Controller
     public function edit(string $id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
-        return view('mahasiswa.edit', compact('mahasiswa'));
+        $prodi = Prodi::all();
+        return view('mahasiswa.edit', compact('mahasiswa','prodi'));
     }
 
     /**
@@ -68,15 +70,15 @@ class MahasiswaController extends Controller
     {
         $validate = $request->validate([
             'nama_mahasiswa' => 'required|max:50',
-            'nim' => 'required|unique:mahasiswas',
-            'prodi' => 'required',
+            'nim' => 'required|unique:mahasiswas,nim',
+            'prodi_id' => 'required',
         ]);
 
-        $mahasiswa = mahasiswa::findOrFail($id);
+        $mahasiswa = Mahasiswa::findOrFail($id);
         $mahasiswa->update([
             'nama_mahasiswa'=> $request->nama_mahasiswa,
             'nim'=> $request->nim,
-            'prodi'=> $request->prodi,
+            'prodi_id'=> $request->prodi_id,
         ]);
 
         return redirect()->route('mahasiswa.index');

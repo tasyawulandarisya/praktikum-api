@@ -32,18 +32,18 @@
         <span>Prodi</span></a>
 </li>
 
-<!-- Nav Item - Mahasiswa -->
-<li class="nav-item active">
-    <a class="nav-link" href="{{ route('mahasiswa.index') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Mahasiswa</span></a>
-</li>
-
 <!-- Nav Item - Dosen -->
 <li class="nav-item active">
     <a class="nav-link" href="{{ route('dosen.index') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dosen</span></a>
+</li>
+
+<!-- Nav Item - Mahasiswa -->
+<li class="nav-item active">
+    <a class="nav-link" href="{{ route('mahasiswa.index') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Mahasiswa</span></a>
 </li>
 
 <hr class="sidebar-divider d-none d-md-block">

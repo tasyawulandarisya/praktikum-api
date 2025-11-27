@@ -35,10 +35,17 @@
             </div>
 
             <div class="form-group">
-                <label for="prodi">Prodi</label>
-                <input type="text" class="form-control" id="prodi" name="prodi" placeholder="Masukkan Prodi" value="{{ $dosen->prodi }}">
+                <label for="prodi_id">Prodi</label>
+                <select class="form-control" name="prodi_id" id="prodi_id">
+                    @foreach($prodi as $item)
+                        <option value="{{ $item->id }}" 
+                            {{ $item->id == $dosen->prodi_id }}>
+                            {{ $item->nama_prodi }}
+                        </option>
+                    @endforeach
+                </select>
 
-                @error('prodi')
+                @error('prodi_id')
                 <small class="text-danger">{{$message}}</small>
                 @enderror
             </div>

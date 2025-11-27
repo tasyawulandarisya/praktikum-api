@@ -35,11 +35,14 @@
             </div>
 
             <div class="form-group">
-                <label for="prodi">Prodi</label>
-                <input type="text" class="form-control" id="prodi" name="prodi" placeholder="Masukkan Prodi">
-
-                @error('prodi')
-                <small class="text-danger">{{$message}}</small>
+                <label for="prodi_id">Program Studi</label>
+                <select class="form-control" name="prodi_id" id="prodi_id" required>
+                    @foreach($prodi as $item)
+                        <option value="{{ $item->id }}">{{ $item->nama_prodi }}</option>
+                    @endforeach
+                </select>
+                @error('prodi_id')
+                    <small class="text-danger">{{$message}}</small>
                 @enderror
             </div>
 

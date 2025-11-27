@@ -30,7 +30,7 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$item->nama_dosen}}</td>
                                             <td>{{$item->nidn}}</td>
-                                            <td>{{$item->prodi}}</td>
+                                            <td>{{$item->prodi->nama_prodi}}</td>
                                             <td>
                                                 <a href="{{ route('dosen.edit',$item->id) }}" class="btn btn-primary">Edit</a>
                                                 <a href="{{ route('dosen.hapus',$item->id) }}" class="btn btn-danger">Hapus</a>

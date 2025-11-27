@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nim');
         
 
+            $table->unsignedBigInteger('prodi_id');
             $table->foreignId('prodi_id')->references('id')->on('prodis')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
