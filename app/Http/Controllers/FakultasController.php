@@ -33,6 +33,7 @@ class FakultasController extends Controller
             'nama_fakultas' => 'required|max:50',
             'kode_fakultas' => 'required',
         ]);
+        
         $fakultas = Fakultas::create([
             'nama_fakultas' => $request->nama_fakultas,
             'kode_fakultas' => $request->kode_fakultas,

@@ -26,7 +26,19 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'nama_prodi' => 'required|max:50',
+            'kode_prodi' => 'required',
+            'fakultas_id' => 'required'
+        ]);
+
+        $prodi = Prodi::create($validate);
+
+        return response()->json([
+            'status'=>true,
+            'message'=>"Data berhasil ditambahkan",
+            'data'=>$prodi
+        ],200);
     }
 
     /**

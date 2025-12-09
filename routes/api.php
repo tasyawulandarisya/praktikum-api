@@ -24,6 +24,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/fakultas',[FakultasController::class,'index']);
+Route::post('/fakultas',[FakultasController::class,'store']);
 Route::get('/prodi',[ProdiController::class,'index']);
+Route::post('/prodi',[ProdiController::class,'store']);
 Route::get('/dosen',[DosenController::class,'index']);
+Route::post('/dosen',[DosenController::class,'store']);
 Route::get('/mahasiswa',[MahasiswaController::class,'index']);
+Route::post('/mahasiswa',[MahasiswaController::class,'store']);
